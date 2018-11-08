@@ -10,6 +10,10 @@ class KitsController < ApplicationController
   # GET /kits/1
   # GET /kits/1.json
   def show
+
+    @kit_id = @kit.id
+    
+    @sounds = Kit.find(@kit_id).sounds
   end
 
   # GET /kits/new

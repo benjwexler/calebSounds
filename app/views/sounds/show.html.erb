@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<audio controls>
+  
+  <source src="<%=
+  url_for(@sound.soundfile)%>" type="audio/mpeg">
+ 
+Your browser does not support the audio element.
+</audio>
+
 <p>
   <strong>Name:</strong>
   <%= @sound.name %>
@@ -7,7 +15,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @sound.type %>
+  <%= @sound.type_of_sound %>
 </p>
 
 <p>

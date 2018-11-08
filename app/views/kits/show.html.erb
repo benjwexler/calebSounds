@@ -20,5 +20,17 @@
   <%= @kit.quantity_sold %>
 </p>
 
+<% @sounds.each do |sound| %>
+
+  <audio controls>
+  
+  <source src="<%=
+  url_for(sound.soundfile)%>" type="audio/mpeg">
+ 
+Your browser does not support the audio element.
+</audio>
+
+<% end %>
+
 <%= link_to 'Edit', edit_kit_path(@kit) %> |
 <%= link_to 'Back', kits_path %>
