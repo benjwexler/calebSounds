@@ -1,0 +1,2 @@
+class SoundAndKit < ApplicationRecord
+end
