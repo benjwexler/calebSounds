@@ -5,6 +5,8 @@ class SoundsController < ApplicationController
   # GET /sounds.json
   def index
     @sounds = Sound.all
+
+   
   end
 
   # GET /sounds/1
@@ -15,6 +17,9 @@ class SoundsController < ApplicationController
   # GET /sounds/new
   def new
     @sound = Sound.new
+ 
+    @kits = Kit.all
+  
   end
 
   # GET /sounds/1/edit
@@ -25,6 +30,10 @@ class SoundsController < ApplicationController
   # POST /sounds.json
   def create
     @sound = Sound.new(sound_params)
+    p params["sound"]
+    p "FUCK FUCK FUCK"
+    p params["sound"]["kit"]
+    p "FUCK FUCK FUCK"
 
     respond_to do |format|
       if @sound.save
