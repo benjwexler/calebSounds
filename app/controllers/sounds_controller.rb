@@ -31,20 +31,30 @@ class SoundsController < ApplicationController
   def create
     @sound = Sound.new(sound_params)
     p params["sound"]
-    p "FUCK FUCK FUCK"
-    p params["sound"]["kit"]
-    p "FUCK FUCK FUCK"
+    p "_______dfggffsgsffffsf"
+    #Accesses which kit the sound belongs to
+    p @whichKit = params["sound"]["kit"]
+   
+    p "f dfinfdidffd fo  fdfd___________"
+
+    # @kit = Kit.new
 
     respond_to do |format|
       if @sound.save
+        p new_sound = Sound.last.id
+        @sound_and_kit = SoundAndKit.new(:kit_id => @whichKit, :sound_id => new_sound)
+        @sound_and_kit.save
         format.html { redirect_to @sound, notice: 'Sound was successfully created.' }
         format.json { render :show, status: :created, location: @sound }
+
       else
         format.html { render :new }
         format.json { render json: @sound.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
 
   # PATCH/PUT /sounds/1
   # PATCH/PUT /sounds/1.json

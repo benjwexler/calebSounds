@@ -4,7 +4,7 @@ document.addEventListener("turbolinks:load", listener)
 
 
 function changeValue() {
-    document.getElementById("sound_name").value = document.getElementById("whichKit").value
+    document.getElementById("kit_id").value = document.getElementById("whichKit").value
     
 }
 

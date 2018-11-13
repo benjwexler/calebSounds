@@ -1,37 +1,19 @@
-<%= form_with(model: kit, local: true) do |form| %>
-  <% if kit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(kit.errors.count, "error") %> prohibited this kit from being saved:</h2>
+<%= form_for @kit do |form| %>
 
-      <ul>
-      <% kit.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+name: <%= form.text_field :name %><br />
+description: <%= form.text_field :description %><br />
+price: <%= form.text_field :price %><br />
+quantity_sold: <%= form.number_field :quantity_sold %><br />
+
+<%= form.fields_for :sounds do |sound_fields| %>
+    name: <%= sound_fields.text_field :name %><br />
+    type_of_sound: <%= sound_fields.text_field :type_of_sound %><br />
+    description: <%= sound_fields.text_field :description %><br />
+   key: <%= sound_fields.text_field :key %> <br />
+   tempo: <%= sound_fields.text_field :tempo %> <br />
+   soundfile: <%= sound_fields.file_field :soundfile %> <br />
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quantity_sold %>
-    <%= form.number_field :quantity_sold %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+ <%= form.submit %>
 <% end %>
