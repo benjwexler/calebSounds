@@ -1,18 +1,17 @@
 <%= form_for @kit do |form| %>
 
+
+
 name: <%= form.text_field :name %><br />
 description: <%= form.text_field :description %><br />
 price: <%= form.text_field :price %><br />
-quantity_sold: <%= form.number_field :quantity_sold %><br />
+<%= form.file_field :folder, multiple: true, name: "kit[folder][]" %> <br />
 
-<%= form.fields_for :sounds do |sound_fields| %>
-    name: <%= sound_fields.text_field :name %><br />
-    type_of_sound: <%= sound_fields.text_field :type_of_sound %><br />
-    description: <%= sound_fields.text_field :description %><br />
-   key: <%= sound_fields.text_field :key %> <br />
-   tempo: <%= sound_fields.text_field :tempo %> <br />
-   soundfile: <%= sound_fields.file_field :soundfile %> <br />
-  <% end %>
+quantity_sold: <%= form.number_field :quantity_sold %><br />
+<br>
+
+
+ 
 
 
  <%= form.submit %>

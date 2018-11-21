@@ -30,6 +30,7 @@ class SoundsController < ApplicationController
   # POST /sounds.json
   def create
     @sound = Sound.new(sound_params)
+    # @sound = Sound.new(:name => params["sound"]["name"], :type_of_sound => params["sound"]["type_of_sound"], :description => params["sound"]["description"] , :key => params["sound"]["key"], :tempo => params["sound"]["tempo"], :soundfile => params["sound"]["soundfile"])
     p params["sound"]
     p "_______dfggffsgsffffsf"
     #Accesses which kit the sound belongs to

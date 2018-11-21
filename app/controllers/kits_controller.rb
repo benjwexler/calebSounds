@@ -29,6 +29,7 @@ class KitsController < ApplicationController
   def new
     @kit = Kit.new
     @kit.sounds.build
+    
   end
 
   # GET /kits/1/edit
@@ -39,24 +40,45 @@ class KitsController < ApplicationController
   # POST /kits.json
   def create
     p params 
-    p params["kit"]["name"]
+    # p metro_kit = params["kit"]["folder"]
+    # p metro_kit
+    p soundfiles = params["kit"]["folder"]
+    p  params["kit"]["name"]
+
+    
+
+    # @sound1 = Sound.new(:name => params["kit"]["name"], :type_of_sound => params["kit"]["name"] , :description => params["kit"]["name"], :key => params["kit"]["name"] , :tempo => params["kit"]["name"], :soundfile => params["kit"]["folder"][0])
+    # @sound2 = Sound.new(:name => params["kit"]["name"], :type_of_sound => params["kit"]["name"] , :description => params["kit"]["name"], :key => params["kit"]["name"] , :tempo => params["kit"]["name"], :soundfile => params["kit"]["folder"][1])
+    # @sound3 = Sound.new(:name => params["kit"]["name"], :type_of_sound => params["kit"]["name"] , :description => params["kit"]["name"], :key => params["kit"]["name"] , :tempo => params["kit"]["name"], :soundfile => params["kit"]["folder"][2])
+    p "dfnuhefnuhfe uf idf idfj dfi"
+
+    # @sound1.save
+    # @sound2.save
+    # @sound3.save
+    
+    # Dir.foreach(metro_kit) {|x| puts x}
+    
     # p params["name"]
     # p params["type_of_sound"]
 
     p "_________________________________"
-    @kit = Kit.new(kit_params)
+    # @kit = Kit.new(kit_params)
     # :name, :description, :price, :quantity_sold
-    # @kit = Kit.new(:name => params["name"], :description => params["description"], :price => params["price"], :quantity_sold => 0)
+    @kit = Kit.new(:name => params["kit"]["name"], :description => params["kit"]["description"], :price => params["kit"]["price"], :quantity_sold => 0)
+    #  p Kit.last.id
+        # p Sound.last.id
+        # @soundAndKit = SoundAndKit.new(:kit_id => Kit.last.id, :sound_id => Sound.last.id)
+        # @soundAndKit.save 
     # p kit_params["name"]
     # p kit_params
-    p Kit.last.id
-    p Sound.last.id
+    # p Kit.last.id
+    # p Sound.last.id
     p "_________________________________"
 
     respond_to do |format|
       if @kit.save
-        p Kit.last.id
-        p Sound.last.id
+        # p Kit.last.id
+        # p Sound.last.id
         # SoundAndKit.new(:kit_id => Kit.last.id, :sound_id => Sound.last.id)
         format.html { redirect_to @kit, notice: 'Kit was successfully created.' }
         format.json { render :show, status: :created, location: @kit }
@@ -65,6 +87,27 @@ class KitsController < ApplicationController
         format.json { render json: @kit.errors, status: :unprocessable_entity }
       end
     end
+
+    i = 1
+    if Kit.last
+      p @last_kit = Kit.last.id
+    else 
+      @last_kit = 1
+    end 
+
+    soundfiles.each do |soundfile|
+      p soundfile
+      @sound = Sound.new(:name => params["kit"]["name"], :type_of_sound => params["kit"]["name"] , :description => params["kit"]["name"], :key => params["kit"]["name"] , :tempo => i, :soundfile => soundfile)
+      @sound.save
+      i+=1
+      if Sound.last
+        @last_sound = Sound.last.id
+      else 
+        @last_sound = 1
+      end 
+        @soundAndKit = SoundAndKit.new(:kit_id => @last_kit, :sound_id => @last_sound)
+        @soundAndKit.save 
+    end 
   end
 
   # PATCH/PUT /kits/1
