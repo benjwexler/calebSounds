@@ -30,21 +30,32 @@ class SoundsController < ApplicationController
   # POST /sounds.json
   def create
     @sound = Sound.new(sound_params)
+    # @sound = Sound.new(:name => params["sound"]["name"], :type_of_sound => params["sound"]["type_of_sound"], :description => params["sound"]["description"] , :key => params["sound"]["key"], :tempo => params["sound"]["tempo"], :soundfile => params["sound"]["soundfile"])
     p params["sound"]
-    p "FUCK FUCK FUCK"
-    p params["sound"]["kit"]
-    p "FUCK FUCK FUCK"
+    p "_______dfggffsgsffffsf"
+    #Accesses which kit the sound belongs to
+    p @whichKit = params["sound"]["kit"]
+   
+    p "f dfinfdidffd fo  fdfd___________"
+
+    # @kit = Kit.new
 
     respond_to do |format|
       if @sound.save
+        p new_sound = Sound.last.id
+        @sound_and_kit = SoundAndKit.new(:kit_id => @whichKit, :sound_id => new_sound)
+        @sound_and_kit.save
         format.html { redirect_to @sound, notice: 'Sound was successfully created.' }
         format.json { render :show, status: :created, location: @sound }
+
       else
         format.html { render :new }
         format.json { render json: @sound.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
 
   # PATCH/PUT /sounds/1
   # PATCH/PUT /sounds/1.json
