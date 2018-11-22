@@ -8,6 +8,14 @@ class KitsController < ApplicationController
     @kits = Kit.all
   end
 
+  def design
+
+    @soundfile = Sound.first.soundfile
+
+    @sounds = Sound.all
+  
+  end
+
   def bestsellers
     p "BESTSELLER"
 
