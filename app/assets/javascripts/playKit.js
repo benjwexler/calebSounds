@@ -12,13 +12,12 @@ for (let i = 0; i < pads.length; i++) {
     // window[`bufferNode${i + 1}`] = 5
     counterObj[`newPadCounterpad${i + 1}`] = 0;
     pads[i].id = `pad${i + 1}`
-    pads[i].addEventListener('click', padDown)
+    pads[i].addEventListener("mousedown", padDown)
     counterObj['newPadCounter' + (i + 1)] = 0;
 }
 
 
 function padDown() {
-    console.log(this.id)
 
     playAndStop(this.id)
 

@@ -1,23 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @track.name %>
-</p>
-
-<p>
-  <strong>Soundcloud:</strong>
-  <%= @track.soundcloud_id %>
-</p>
-
-<p>
-  <strong>Release date:</strong>
-  <%= @track.release_date %>
-</p>
 
 
-<strong>Cover Art:</strong>
- <%= image_tag @track.cover_art %>
+  <div id="cardsContainer">
+                
+                <div class="card" style="width: 18rem;">
+                        <div class="playIcon">
+                                <i class="fas fa-play fa-3x playAndPauseIcon"></i>
+                        </div>
+                    <h5 class="card-title"><%=@track.name%></h5>
+                    <img class="card-img-top" src="<%=url_for(@track.cover_art)%>" alt="Card image cap">
+                    <div class="card-body">
+
+                        <p class="card-text">
+                            Released: <%=@track.release_date.strftime("%m/%d/%y")%>
+
+                        </p>
+
+                    </div>
+
+                </div>
+            
+            </div>
+        
+            
+        </div>
 
 
 <%= link_to 'Edit', edit_track_path(@track) %> |
