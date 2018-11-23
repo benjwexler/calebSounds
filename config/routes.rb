@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/kits/bestsellers', to: 'kits#bestsellers'
   resources :kits
 
-  # get '/', to: 'kits#design'
+    # get '/', to: 'kits#design'
   root :to => 'kits#design'
  
   
