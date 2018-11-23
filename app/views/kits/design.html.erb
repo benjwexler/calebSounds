@@ -60,100 +60,47 @@
 
         <div id="mainContainer">
             <div id="chairsText"></div>
+            <% i = 1 %>
+            <% @tracks.each do |track| %>
+
+            <% if i % 2 != 0 %>
             <div id="cardsContainer">
+            <%end %>
 
-                    <iframe class="soundclouds" id="sc-widget1" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/525402885&visual=true"></iframe>
-    
+            
 
-                    <iframe class="soundclouds" id="sc-widget2" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/510851550&visual=true"></iframe>
+            
+
+                    <iframe class="soundclouds" id="sc-widget<%=i%>" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%=track.soundcloud_id%>&visual=true"></iframe>
+
                 
-                    <iframe class="soundclouds" id="sc-widget3" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/259976793&visual=true"></iframe>
-
-                    <iframe class="soundclouds" id="sc-widget4" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/167569641&visual=true"></iframe>
-                
                 <div class="card" style="width: 18rem;">
-                        <div id="playIconOuterContainer1" class="playIcon">
-                                <i id="playAndPauseIcon1" class="fas fa-play fa-3x playAndPauseIcon"></i>
+                        <div id="playIconOuterContainer<%=i%>" class="playIcon">
+                                <i id="playAndPauseIcon<%=i%>" class="fas fa-play fa-3x playAndPauseIcon"></i>
                         </div>
-                    <h5 class="card-title">Beat Tape '18</h5>
-                    <img class="card-img-top" src="pics/beatTape18Caleb.jpg" alt="Card image cap">
+                    <h5 class="card-title"><%=track.name%></h5>
+                    <img class="card-img-top" src="<%=url_for(track.cover_art)%>" alt="Card image cap">
                     <div class="card-body">
 
                         <p class="card-text">
-                            Released: 11/2/18
+                            Released: <%=track.release_date.strftime("%m/%d/%y")%>
 
                         </p>
 
                     </div>
 
                 </div>
-                <!-- <div class="card" style="width: 18rem;">
-                        <h5 class="card-title">Beat Tape '18</h5>
-                        <img class="card-img-top" src="beatTape18Caleb.jpg" alt="Card image cap">
-                        <div class="card-body">
-    
-                            <p class="card-text">
-                                Released: 11/2/18
-                               
-                            </p>
-    
-                        </div>
-    
-                    </div> -->
 
-                <div class="card" style="width: 18rem;">
-                        <div id="playIconOuterContainer2" class="playIcon">
-                                <i id="playAndPauseIcon2" class="fas fa-play fa-3x playAndPauseIcon"></i>
-                        </div>
-                    <!-- <div class="cdSide"></div> -->
-                   
-                    <h5 class="card-title">Tribute</h5>
-                    <img class="card-img-top" src="pics/tributeCoverArtCalb.jpg" alt="Card image cap">
-                    <div class="card-body">
+                <%i+=1%>
 
-                        <p class="card-text">
-                            Released: 10/6/18
+           
+           
 
-                        </p>
-
-                    </div>
-
-                </div>
+               <% if i % 2 != 0 %> 
             </div>
-            <div id="cardsContainer">
-                <div class="card" style="width: 18rem;">
-                        <div class="playIcon">
-                                <i id="playAndPauseIcon3" class="fas fa-play fa-3x playAndPauseIcon"></i>
-                        </div>
-                    <h5 class="card-title">C'est Yes EP</h5>
-                    <img class="card-img-top" src="pics/c'estYesCoverArt.jpg" alt="Card image cap">
-                    <div class="card-body">
-
-                        <p class="card-text">xw Released: 4/20/16
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div class="card" style="width: 18rem;">
-                        <div class="playIcon">
-                                <i id="playAndPauseIcon4" class="fas fa-play fa-3x playAndPauseIcon"></i>
-                        </div>
-                    <h5 class="card-title">Kermit's Home</h5>
-                    <img class="card-img-top" src="pics/kermitCoverArt.jpg" alt="Card image cap">
-                    <div class="card-body">
-
-                        <p class="card-text">
-                            Released: 10/6/18
-
-                        </p>
-
-                    </div>
-
-                </div>
-            </div>
+            <% end %>
+             <% end %>
+            
         </div>
         <!-- </div> -->
 
