@@ -253,6 +253,17 @@
     display: none;
 }
 
+.soundcloud:hover {
+    color: #ff8800 !important
+}
+
+.instagram:hover {
+    color: #bc2a8d !important
+}
+.spotify:hover {
+    color: #1DB954 !important
+}
+
 @media only screen and (max-width: 765px) {
 
 
@@ -263,6 +274,8 @@
     .icon {
         display: none;
     }
+
+    
 
     
 }
