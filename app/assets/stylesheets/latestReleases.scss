@@ -242,3 +242,27 @@
     margin-top: 60px;
     filter: blur(22px)  
 }
+.icon {
+    opacity: .8 !important;
+}
+.icon:hover {
+    opacity: 1 !important;
+}
+
+.textNoIcon {
+    display: none;
+}
+
+@media only screen and (max-width: 765px) {
+
+
+    .textNoIcon {
+        display: flex;
+    }
+
+    .icon {
+        display: none;
+    }
+
+    
+}
