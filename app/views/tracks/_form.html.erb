@@ -1,4 +1,4 @@
-<%= form_with(model: track, local: true) do |form| %>
+<%= form_with(model: track, local: true, :html=> {:id => "createTrack"}) do |form| %>
   <% if track.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(track.errors.count, "error") %> prohibited this track from being saved:</h2>
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :soundcloud_id %>
-    <%= form.number_field :soundcloud_id %>
+    <%= form.text_field :soundcloud_id %>
   </div>
 
   <div class="field">
@@ -31,7 +31,13 @@
     <%= form.date_select :release_date %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+
+
+  <div class="actions" onkeypress="return event.keyCode!=13">
+    <%= form.submit
+
+%>
   </div>
 <% end %>
+
+  <button id="fakeSubmitBtn"> Fake Submit Button</button>
