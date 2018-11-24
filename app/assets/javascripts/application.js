@@ -19,7 +19,6 @@
 
 //= require .//main.js
 //= require .//soundcloud.js
-//= require .//kitGallery.js
 //= require .//latestTracks.js
 //= require .//navbar.js
 
