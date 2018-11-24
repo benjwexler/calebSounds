@@ -316,11 +316,6 @@ LinkedList.prototype.addToTail = function (value) {
 
 const list = new LinkedList();
 
-let coverArtArr = ["pics/beatTape18Caleb.jpg", "pics/c'estYesCoverArt.jpg", "pics/kermitCoverArt.jpg", "pics/tributeCoverArtCalb.jpg", "pics/calebStoicRedLight.jpg", "pics/beatTape18Caleb.jpg", "pics/c'estYesCoverArt.jpg", "pics/kermitCoverArt.jpg", "pics/tributeCoverArtCalb.jpg", "pics/guitarLogo.png"
-]
-
-
-
 <%@kits.each do |kit| %>
     list.addToTail(
     { id : <%=kit.id%>, 
