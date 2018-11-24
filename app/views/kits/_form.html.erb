@@ -6,6 +6,8 @@ name: <%= form.text_field :name %><br />
 description: <%= form.text_field :description %><br />
 price: <%= form.text_field :price %><br />
 <%= form.file_field :folder, multiple: true, name: "kit[folder][]" %> <br />
+cover_art: <%= form.file_field :cover_art %> <br />
+
 
 quantity_sold: <%= form.number_field :quantity_sold %><br />
 <br>

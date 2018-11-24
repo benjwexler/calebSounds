@@ -16,6 +16,8 @@ class KitsController < ApplicationController
 
     # @tracks = Track.all.limit(4)
     @tracks = Track.order(release_date: :desc).limit(4)
+
+    @kits = Kit.all
   
   end
 
@@ -81,7 +83,7 @@ class KitsController < ApplicationController
     p "_________________________________"
     # @kit = Kit.new(kit_params)
     # :name, :description, :price, :quantity_sold
-    @kit = Kit.new(:name => params["kit"]["name"], :description => params["kit"]["description"], :price => params["kit"]["price"], :quantity_sold => 0)
+    @kit = Kit.new(:name => params["kit"]["name"], :description => params["kit"]["description"], :price => params["kit"]["price"], :quantity_sold => 0, :cover_art => params["kit"]["cover_art"])
     #  p Kit.last.id
         # p Sound.last.id
         # @soundAndKit = SoundAndKit.new(:kit_id => Kit.last.id, :sound_id => Sound.last.id)

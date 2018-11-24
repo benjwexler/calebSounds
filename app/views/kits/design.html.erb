@@ -319,14 +319,17 @@ const list = new LinkedList();
 let coverArtArr = ["pics/beatTape18Caleb.jpg", "pics/c'estYesCoverArt.jpg", "pics/kermitCoverArt.jpg", "pics/tributeCoverArtCalb.jpg", "pics/calebStoicRedLight.jpg", "pics/beatTape18Caleb.jpg", "pics/c'estYesCoverArt.jpg", "pics/kermitCoverArt.jpg", "pics/tributeCoverArtCalb.jpg", "pics/guitarLogo.png"
 ]
 
-for (let i = 0; i < coverArtArr.length; i++) {
+
+
+<%@kits.each do |kit| %>
     list.addToTail(
-    { id : i, 
-    pic : coverArtArr[i]
-    }
-    
-    );
-}
+    { id : <%=kit.id%>, 
+    pic : "<%=url_for(kit.cover_art)%>"
+    });
+<% end %>
+
+
+
 
 list.head.prev = list.tail
 list.tail.next = list.head
