@@ -25,6 +25,12 @@ class KitsController < ApplicationController
     @kits = Kit.all.limit(2)
   end
 
+  def getRequest
+
+    render text: 'Thanks for sending a GET request with cURL!'
+
+  end 
+
   # GET /kits/1
   # GET /kits/1.json
   def show
