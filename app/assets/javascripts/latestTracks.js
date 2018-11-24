@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
 const fakeSubmitBtn = document.getElementById("fakeSubmitBtn");
 const createTrack = document.getElementById("createTrack");
 
+console.log()
+
 
 const soundcloudEmbed = document.getElementById("track_soundcloud_id")
 

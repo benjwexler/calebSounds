@@ -20,6 +20,12 @@
   <%= @kit.quantity_sold %>
 </p>
 
+<p>
+  <strong>Cover Art:</strong>
+  <img src="<%=url_for(@kit.cover_art)%>" 
+  
+</p>
+
 <% @sounds.each do |sound| %>
 
   <audio controls>
