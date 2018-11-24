@@ -21,6 +21,7 @@
 //= require .//soundcloud.js
 //= require .//kitGallery.js
 //= require .//latestTracks.js
+//= require .//navbar.js
 
 
 //= require_self
