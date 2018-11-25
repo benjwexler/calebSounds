@@ -1,14 +1,22 @@
 class KitsController < ApplicationController
-  before_action :set_kit, only: [:show, :edit, :update, :destroy]
+  before_action :set_kit, only: [:show, :edit, :update, :destroy, :loadSounds]
   # skip_before_action :set_kit, :only => [:bestsellers]
 
   # GET /kits
   # GET /kits.json
   def index
     @kits = Kit.all
+    p "Hi"
+
+    p params 
   end
 
   def design
+
+    # Thread.new { 
+      @kits = Kit.all
+
+    # p Thread.list.select {|thread| thread.status == "run"}.count
 
     @soundfile = Sound.first.soundfile
 
@@ -17,7 +25,7 @@ class KitsController < ApplicationController
     # @tracks = Track.all.limit(4)
     @tracks = Track.order(release_date: :desc).limit(4)
 
-    @kits = Kit.all
+    
   
   end
 
@@ -39,7 +47,17 @@ class KitsController < ApplicationController
 
     @kit_id = @kit.id
     
-    @sounds = Kit.find(@kit_id).sounds
+    p @sounds = Kit.find(@kit_id).sounds
+  
+  end
+
+  def loadSounds
+    @kit_id = @kit.id
+    
+    p @sounds = Kit.find(@kit_id).sounds
+    respond_to do |format|
+      format.js {render :loadSounds}
+    end 
   end
 
   

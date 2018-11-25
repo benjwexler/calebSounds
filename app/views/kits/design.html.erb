@@ -263,6 +263,8 @@
 
 <script>
 
+let indexForPadUpdate
+
 let counterObj = {
 };
 
@@ -275,10 +277,18 @@ document.addEventListener("DOMContentLoaded", function () {
 let galleryImages = document.getElementsByClassName("galleryImage")
 
 
-let highLightedPick = galleryImages[1].parentElement
+let highLightedPick = galleryImages[1].parentElement 
 
 
 function soundPackImage() {
+    let id = this.id
+
+    $.ajax({
+  method: "GET",
+  url: `/kits/${this.id}/loadSounds`,
+  dataType: 'script'
+});
+
     document.getElementById("soundPackImage").src = this.src 
     this.parentElement.style.opacity="1"
     highLightedPick.style.opacity=".6"
