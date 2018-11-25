@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   resources :sound_and_kits
   resources :sounds
   get '/kits/bestsellers', to: 'kits#bestsellers'
+  get '/kits/switchSounds', to: 'kits#switchSounds'
   # get '/kits/getRequest', to: 'kits#getRequest'
   match '/kits/getRequest' => 'kits#getRequest', via: :get
 
-  resources :kits
+  resources :kits do
+    member do
+      get 'loadSounds'
+    end
+  end 
 
     # get '/', to: 'kits#design'
   root :to => 'kits#design'
