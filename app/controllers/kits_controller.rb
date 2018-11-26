@@ -13,16 +13,9 @@ class KitsController < ApplicationController
 
   def design
 
-    # Thread.new { 
       @kits = Kit.all
-
-    # p Thread.list.select {|thread| thread.status == "run"}.count
-
     @soundfile = Sound.first.soundfile
-
-    @sounds = Sound.all
-
-    # @tracks = Track.all.limit(4)
+    @sounds = Sound.all.limit(16)
     @tracks = Track.order(release_date: :desc).limit(4)
 
     
@@ -77,46 +70,12 @@ class KitsController < ApplicationController
   # POST /kits.json
   def create
     p params 
-    # p metro_kit = params["kit"]["folder"]
-    # p metro_kit
     p soundfiles = params["kit"]["folder"]
     p  params["kit"]["name"]
-
-    
-
-    # @sound1 = Sound.new(:name => params["kit"]["name"], :type_of_sound => params["kit"]["name"] , :description => params["kit"]["name"], :key => params["kit"]["name"] , :tempo => params["kit"]["name"], :soundfile => params["kit"]["folder"][0])
-    # @sound2 = Sound.new(:name => params["kit"]["name"], :type_of_sound => params["kit"]["name"] , :description => params["kit"]["name"], :key => params["kit"]["name"] , :tempo => params["kit"]["name"], :soundfile => params["kit"]["folder"][1])
-    # @sound3 = Sound.new(:name => params["kit"]["name"], :type_of_sound => params["kit"]["name"] , :description => params["kit"]["name"], :key => params["kit"]["name"] , :tempo => params["kit"]["name"], :soundfile => params["kit"]["folder"][2])
-    p "dfnuhefnuhfe uf idf idfj dfi"
-
-    # @sound1.save
-    # @sound2.save
-    # @sound3.save
-    
-    # Dir.foreach(metro_kit) {|x| puts x}
-    
-    # p params["name"]
-    # p params["type_of_sound"]
-
-    p "_________________________________"
-    # @kit = Kit.new(kit_params)
-    # :name, :description, :price, :quantity_sold
     @kit = Kit.new(:name => params["kit"]["name"], :description => params["kit"]["description"], :price => params["kit"]["price"], :quantity_sold => 0, :cover_art => params["kit"]["cover_art"])
-    #  p Kit.last.id
-        # p Sound.last.id
-        # @soundAndKit = SoundAndKit.new(:kit_id => Kit.last.id, :sound_id => Sound.last.id)
-        # @soundAndKit.save 
-    # p kit_params["name"]
-    # p kit_params
-    # p Kit.last.id
-    # p Sound.last.id
-    p "_________________________________"
 
     respond_to do |format|
       if @kit.save
-        # p Kit.last.id
-        # p Sound.last.id
-        # SoundAndKit.new(:kit_id => Kit.last.id, :sound_id => Sound.last.id)
         format.html { redirect_to @kit, notice: 'Kit was successfully created.' }
         format.json { render :show, status: :created, location: @kit }
       else

@@ -371,11 +371,17 @@ document.getElementById("prevBtn").addEventListener("click", nextPic)
 
 
 let pads = document.getElementsByClassName("pad")
+let padText = document.getElementsByClassName("padText")
 
-let x = 1
+
+let x = 0
 
 <% @sounds.each do |sound| %>
-    soundsObj[`pad${x}`] = "<%=url_for(sound.soundfile)%>"
+    console.log(x)
+    soundsObj[`pad${x+1}`] = "<%=url_for(sound.soundfile)%>"
+    console.log(padText[x])
+    padText[x].innerText = `<%=sound.soundfile.filename%>.split[0]`
+    console.log(padText[x].innerText)
     x++
 
 
