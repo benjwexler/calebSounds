@@ -1,6 +1,7 @@
 class KitsController < ApplicationController
   before_action :set_kit, only: [:show, :edit, :update, :destroy, :loadSounds]
-  before_action :authenticate_user!, only: [:new, :show, :edit, :update, :destroy, :loadSounds]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy ]
+  before_action :not_admin, except: [:design, :loadSounds]
   # skip_before_action :set_kit, :only => [:bestsellers]
 
   # GET /kits
@@ -12,6 +13,8 @@ class KitsController < ApplicationController
     p params 
   end
 
+  
+  # Root Path
   def design
 
       @kits = Kit.all
