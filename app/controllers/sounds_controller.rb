@@ -1,9 +1,16 @@
 class SoundsController < ApplicationController
   before_action :set_sound, only: [:show, :edit, :update, :destroy]
-
+  before_action :not_admin
+  # include ApplicationHelper
+  
   # GET /sounds
   # GET /sounds.json
   def index
+
+    # sayHi
+    # Method found in Application Helper 
+    not_admin
+
     @sounds = Sound.all
 
    
@@ -91,4 +98,6 @@ class SoundsController < ApplicationController
     def sound_params
       params.require(:sound).permit(:name, :type_of_sound, :description, :key, :tempo, :soundfile)
     end
+
+   
 end

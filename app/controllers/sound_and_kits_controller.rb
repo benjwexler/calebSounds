@@ -1,5 +1,6 @@
 class SoundAndKitsController < ApplicationController
   before_action :set_sound_and_kit, only: [:show, :edit, :update, :destroy]
+  before_action :not_admin
 
   # GET /sound_and_kits
   # GET /sound_and_kits.json
