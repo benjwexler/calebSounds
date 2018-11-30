@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :users
   resources :tracks
   resources :sound_and_kits
   resources :sounds
