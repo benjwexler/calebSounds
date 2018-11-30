@@ -109,7 +109,7 @@
                     <img id="drumMachineLogo" src="pics/guitarLogo.png"> Sounds from: "New Thang" - <span style="font-size: 13px">$3.99</span>
                 </a>
                 <div id="addToCartContainer">
-                    <button type="button" class="btn btn-primary">
+                    <button id="addToCartButton" type="button" class="btn btn-primary">
                         <i class="fas fa-shopping-cart"></i>
                         Add to cart
 
@@ -340,6 +340,9 @@ list.head.prev = list.tail
 list.tail.next = list.head
 
 let currentNode = list.head
+
+document.getElementById("addToCartButton").dataset.kitId = list.head.value.id
+
 let tempCurrentNode = currentNode
 
 for (let i = 0; i < 5; i++) {
@@ -371,7 +374,7 @@ document.getElementById("prevBtn").addEventListener("click", nextPic)
 
 
 let pads = document.getElementsByClassName("pad")
-let padText = document.getElementsByClassName("padText")
+let padText = document.getElementsByClassName("padText" )
 
 
 let x = 0
