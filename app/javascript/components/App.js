@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Item from './Item.js';
+import ReactOnRails from 'react-on-rails';
 
 class App extends React.Component {
 
