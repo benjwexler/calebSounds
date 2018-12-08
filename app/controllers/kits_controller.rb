@@ -17,12 +17,14 @@ class KitsController < ApplicationController
   # Root Path
   def design
 
+   
+
       @kits = Kit.all
     @soundfile = Sound.first.soundfile
     @sounds = Sound.all.limit(16)
     @tracks = Track.order(release_date: :desc).limit(4)
     
-
+    p session.values
     
   
   end

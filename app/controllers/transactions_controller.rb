@@ -5,12 +5,21 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @transactions = Transaction.all
+    Transaction.new(session).add_item
+    p @session
+    
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
   def show
   end
+
+  def addToCart
+    p "add to cart"
+    
+  
+  end 
 
   # GET /transactions/new
   def new

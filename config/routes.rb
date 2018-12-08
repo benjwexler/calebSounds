@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :sounds
   get '/kits/bestsellers', to: 'kits#bestsellers'
   get '/kits/switchSounds', to: 'kits#switchSounds'
+  post 'transactions/addToCart', to: 'transactions#addToCart'
   # get '/kits/getRequest', to: 'kits#getRequest'
   match '/kits/getRequest' => 'kits#getRequest', via: :get
 

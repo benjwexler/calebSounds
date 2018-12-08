@@ -24,5 +24,3 @@
 //= require .//drumMachine.js
 
 
-//= require_self
-

@@ -1,0 +1,194 @@
+body {
+  /* background: black; */
+  /* font-family: 'Josefin Sans', sans-serif; */
+  /* font-family: 'Shadows Into Light' !important; */
+  /* font-family: 'Shadows Into Light' !important; */
+  font-family: 'Permanent Marker' !important;
+  /* letter-spacing: 3px;  */
+  font-family: "Chakra Petch" !important;
+  /* font-family: 'Orbitron' !important;  */
+}
+
+#soundCloudEmbed {
+  width: 200px;
+  height: 200px;
+}
+
+.soundclouds {
+  display: none;
+}
+
+#sc-widget {
+  display: none;
+  border-radius: 50% !important;
+}
+
+#sc-widget2 {
+  display: none;
+  border-radius: 50% !important;
+}
+
+.nav-link {
+  cursor: pointer !important;
+  letter-spacing: 1px;
+  /* font-size: 12px !important; */
+}
+
+.navbar {
+  background: white !important;
+  /* font-family: 'Spicy Rice', cursive; */
+  /* border-bottom: 2px solid blue; */
+  border-bottom: 3px solid #1a1555;
+  /* font-family: 'Ubuntu', sans-serif; */
+  /* text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.144); */
+  color: #532ddd !important;
+  color: rgba(45, 51, 221, 0.747) !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* font-family: 'Spicy Rice', cursive;
+    font-family: 'Acme', sans-serif, cursive;
+    font-family: 'Righteous', cursive; */
+  z-index: 999999;
+  font-weight: bold !important;
+  font-family: 'Josefin Sans', sans-serif !important;
+  /* font-family: 'Orbitron' !important; */
+  /* font-family: 'Abril Fatface', cursive; */
+}
+
+#logoText {
+  font-size: 20px;
+  /* width: 50%;
+    border: 1px solid black; */
+  cursor: pointer !important;
+}
+
+#drumMachineLogoText {
+  font-size: 18px;
+  width: 50%;
+  /* border: 1px solid black; */
+}
+
+#addToCartContainer {
+  /* width: 50%; */
+  margin: auto;
+  /* margin-top: 10px; */
+  /* text-align: center; */
+  /* padding-top: 50px; */
+  margin-right: 10px !important;
+}
+
+/* .navbar:hover {
+    color: purple !important;
+} */
+#section1outerContainer {
+  height: 100vh;
+  width: 100%;
+}
+
+#section1 {
+  height: 95vh;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-repeat: no-repeat;
+  background: url("/pics/calebPlayingGuitar1.jpg") no-repeat center center fixed;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.section1row {
+  height: 25%;
+  width: 100%;
+  /* border: 1px solid yellow; */
+  margin: auto;
+  /* margin-left: 20%; */
+  font-size: 50px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+#section1BigText {
+  height: 100%;
+  width: 100%;
+  color: white;
+  margin: auto;
+  text-align: center;
+  /* margin-left: 20%; */
+  /* font-family: 'Josefin Sans' !important; */
+}
+
+#section1BigTextOuterContainer {
+  width: 75%;
+  /* width: auto; */
+}
+
+#section2 {
+  height: auto;
+  width: 100%;
+  /* border: 2px solid black; */
+  /* background-image: linear-gradient(white, rgba(6, 40, 70, 0.714)); */
+  /* background-image: linear-gradient(white, rgba(48, 199, 197, 0.418) 25% ); */
+  /* overflow: hidden; */
+  /* background: black; */
+  /* background-image: url("pics/woodAcousticGuitarsBG.jpg"); */
+  /* background: linear-gradient(rgba(255, 255, 255, 0.527), white), url('pics/calebStoicRedLight.jpg'); */
+  /* background: linear-gradient(rgba(111, 110, 110, 0.411)('pics/calebStoicRedLight.jpg') ; */
+  -o-object-fit: cover;
+     object-fit: cover;
+  background: -webkit-gradient(linear, left top, left bottom, from(#854646), to(rgba(31, 167, 31, 0.6))), url("pics/calebStoicRedLight.jpg");
+  background: linear-gradient(#854646, rgba(31, 167, 31, 0.6)), url("pics/calebStoicRedLight.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(208, 206, 206, 0.493)), to(rgba(60, 199, 233, 0.6))), url("pics/calebStoicRedLight.jpg");
+  background: linear-gradient(rgba(208, 206, 206, 0.493), rgba(60, 199, 233, 0.6)), url("pics/calebStoicRedLight.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.817)), to(white)), url("pics/calebStoicRedLight.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.817), white), url("pics/calebStoicRedLight.jpg");
+  background: linear-gradient(207deg, rgba(71, 109, 204, 0.76), rgba(255, 255, 255, 0.479)), url("/pics/calebStoicRedLight.jpg");
+  /* background: rgba(255, 255, 255, 0.39); */
+  background-repeat: no-repeat;
+  /* background: url("/Users/bwexler/Desktop/calebSoundsStyle/pics/woodAcousticGuitarsBG.jpg") no-repeat center center fixed;  */
+  background-size: cover;
+  margin: auto;
+  -webkit-filter: grayscale(40%);
+  filter: grayscale(40%);
+  background: linear-gradient(207deg, rgba(71, 109, 204, 0.543), white), url("/pics/calebStanRogersFolkFestival.jpg");
+}
+
+#section2title {
+  /* padding-top: 20px; */
+  width: 100%;
+  /* height: 20%; */
+  background: white;
+  background: black;
+  /* color: black; */
+  color: white;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 50px;
+}
+
+@media only screen and (max-height: 880px) {
+  #section1 {
+    height: 100vh;
+    /* height: 85vh; */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #section1 {
+    height: 84vh;
+    /* object-fit: none; */
+    /* height: 85vh; */
+  }
+}
+
+#tutorialSection {
+  height: auto;
+  width: 100%;
+  margin: auto;
+}
+/*# sourceMappingURL=main.css.map */
