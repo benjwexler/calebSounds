@@ -17,6 +17,10 @@ class TransactionsController < ApplicationController
 
   def addToCart
     p "add to cart"
+    # Transaction.new(session).add_item
+    session[:temporary_cart] = 5
+    p params[:authenticity_token]
+    p session[:temporary_cart]
     
   
   end 

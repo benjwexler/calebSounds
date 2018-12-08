@@ -1,6 +1,8 @@
+import ReactOnRails from 'react-on-rails';
 import React, { Component } from 'react';
 import Item from './Item.js';
-import ReactOnRails from 'react-on-rails';
+
+
 
 class App extends React.Component {
 
@@ -12,7 +14,8 @@ class App extends React.Component {
 
   addToCart = () => {
 
-    console.log(this.props)
+    console.log(ReactOnRails.authenticityToken())
+    let token = ReactOnRails.authenticityToken()
 
     let kitId = document.getElementById("addToCartButton").dataset.kitId
 
@@ -22,7 +25,7 @@ class App extends React.Component {
     $.ajax({
       method: "POST",
       url: `/transactions/addToCart`,
-      data: `authenticity_token=${ReactOnRails.authenticityToken()}`,
+      data: `authenticity_token=${token}&blah=5`,
       dataType: 'script'
   });
 

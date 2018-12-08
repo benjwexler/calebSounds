@@ -170,12 +170,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    react-rails (2.4.7)
-      babel-transpiler (>= 0.7.0)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     react_on_rails (11.2.1)
       addressable
       connection_pool
@@ -265,7 +259,6 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.1)
   railties (~> 5.2)
-  react-rails
   react_on_rails
   sass-rails (~> 5.0)
   selenium-webdriver

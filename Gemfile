@@ -9,7 +9,7 @@ gem 'sprockets-es6'
 gem 'webpacker', '~> 3.5'
 gem 'bundler'
 gem 'railties', '~> 5.2'
-gem 'react-rails'
+
 gem 'react_on_rails'
 
 
