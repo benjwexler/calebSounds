@@ -1,0 +1,26 @@
+.cartPic {
+    width: 25%;
+    height: 100%;
+}
+
+.shoppingCartItemContainer {
+    height: 80px;
+    width: 100%;
+    display: flex;
+}
+
+.cartBtn {
+    display: none;
+}
+
+.cartItemName {
+    width: 50%;
+    height: 100%; 
+    border: 1px solid black
+}
+
+.cartItemQuantity {
+    width: 25%;
+    height: 100%; 
+    border: 1px solid black
+}

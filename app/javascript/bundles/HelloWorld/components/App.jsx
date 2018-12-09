@@ -1,7 +1,9 @@
 import ReactOnRails from 'react-on-rails';
 import React, { Component } from 'react';
+// import './ShoppingCart.css';
 import CartBtn from './CartBtn.js';
 import Item from './Item.js';
+
 
 
 
@@ -11,53 +13,86 @@ class App extends React.Component {
     super(props);
 
   this.state = {
-    cart: props
+    cart: props,
+    date: new Date()
   }
 
 }
 
 
   addToCart = () => {
-
-    console.log(ReactOnRails.authenticityToken())
     let token = ReactOnRails.authenticityToken()
 
     let kitId = document.getElementById("addToCartButton").dataset.kitId
+    let coverArtPic = document.getElementById("addToCartButton").dataset.pic
 
-    console.log(kitId)
 
     let that = this
     
-    var response = function (quantity) {
+    var response = (quantity) =>  {
 
-      let blah = JSON.parse(quantity)
-      console.log(blah)
-
-   
-      // let cart = { ...that.state.cart }
-
-      // if (cart[`${kitId}`] === undefined) {
-      //   cart[`${kitId}`] = quantity
-      // } else {
-      //   // cart[`${kitId}`]++
-      //   cart[`${kitId}`] = quantity
-      // }
+      let newCart = JSON.parse(quantity)
+      console.log(that.state.cart)
 
       that.setState({
-        cart: blah
+        cart: newCart
       });
-      console.log(that.state.cart)
-      console.log(Object.keys(that.state.cart))
+
     }
+
+    
 
     $.ajax({
       method: "POST",
-      url: `/transactions/addToCart`,
+      url: `/transactions/cart/addToCart`,
+      data: `authenticity_token=${token}&kitId=${kitId}&coverArtPic=${coverArtPic}`,
+      dataType: 'script',
+      success: response
+    })
+
+  }
+
+  deleteItem = (e) => {
+    console.log(e.target.dataset.kitId)
+
+    let kitId = e.target.dataset.kitId
+    console.log("about to delete")
+
+    let token = ReactOnRails.authenticityToken()
+
+    let that = this
+
+    var response = (quantity) =>  {
+      
+      console.log(quantity)
+
+      let newCart = JSON.parse(quantity)
+      console.log("is delete processing")
+      console.log(that.state.cart)
+
+      // newCart = {...that.state.cart}
+      // delete newCart[key]
+      // delete newCart.kitId
+
+
+      that.setState({
+        cart: newCart,
+        date: new Date()
+      })
+
+    }
+
+   
+
+    $.ajax({
+      method: "POST",
+      url: `/transactions/cart/deleteItemFromCart`,
       data: `authenticity_token=${token}&kitId=${kitId}`,
       dataType: 'script',
       success: response
     })
 
+   
   }
 
   render() {
@@ -67,9 +102,12 @@ class App extends React.Component {
           
           {Object.keys(this.state.cart).map((item, index) => {
           return <Item
-            quantity={this.state.cart[item]}
-            name={item}
+            quantity={this.state.cart[item].quantity}
+            name={`Kit ${item}`}
             key={item}
+            coverArtPic={this.state.cart[item].pic}
+            deleteItem={(e) => this.deleteItem(e)}
+            kitId={item}
             
           />
         })}

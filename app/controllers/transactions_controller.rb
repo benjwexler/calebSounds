@@ -19,6 +19,7 @@ class TransactionsController < ApplicationController
     p "add to cart"
     # Transaction.new(session).add_item
     if session[:temporary_cart] == nil
+      p "???"
       session[:temporary_cart] = {}
     end 
 
@@ -26,9 +27,16 @@ class TransactionsController < ApplicationController
     # kit_id = "Kit#{kit_id}"
 
     if session[:temporary_cart][kit_id] == nil
-      session[:temporary_cart][kit_id] = 1
+      session[:temporary_cart][kit_id] = {
+        quantity: 1,
+        pic: params[:coverArtPic]
+      }
+      p "wtf"
     else 
-      session[:temporary_cart][kit_id] += 1 
+      p new_amount = session[:temporary_cart][kit_id]["quantity"]
+      new_amount +=1
+      p "supposed to add"
+      p session[:temporary_cart][kit_id][:quantity] = new_amount
     end 
     p session[:temporary_cart]
     request.session[:temporary_cart].each {|key, value| puts key.to_s + " --> " + value.to_s }
@@ -42,6 +50,21 @@ class TransactionsController < ApplicationController
     # render json: session[:temporary_cart][kit_id]
     # render json: {name: 15}
 
+  end 
+
+  def deleteFromCart
+    p kit_id = params[:kitId]
+    p session[:temporary_cart]
+    session[:temporary_cart].delete(kit_id)
+    # session[:temporary_cart][kit_id][:quantity] = 7
+    p request.session[:temporary_cart].each {|key, value| puts key.to_s + " --> " + value.to_s }
+    
+    respond_to do |format|
+      format.json do
+        render json: session[:temporary_cart].to_json
+      end
+    end 
+    
   end 
 
   def currentCart

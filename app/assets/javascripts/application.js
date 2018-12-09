@@ -23,5 +23,6 @@
 //= require .//latestTracks.js
 //= require .//navbar.js
 //= require .//drumMachine.js
+//= require .//cart.js
 
 

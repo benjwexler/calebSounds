@@ -266,6 +266,7 @@
 
     <div id="shoppingCartContainer">
             <%= react_component("App", props: session[:temporary_cart].to_json)%>
+            <%= stylesheet_pack_tag 'ShoppingCart' %>
             
     </div>
 </div>
