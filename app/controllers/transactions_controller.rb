@@ -18,10 +18,45 @@ class TransactionsController < ApplicationController
   def addToCart
     p "add to cart"
     # Transaction.new(session).add_item
-    session[:temporary_cart] = 5
-    p params[:authenticity_token]
+    if session[:temporary_cart] == nil
+      session[:temporary_cart] = {}
+    end 
+
+    p kit_id = params[:kitId]
+    # kit_id = "Kit#{kit_id}"
+
+    if session[:temporary_cart][kit_id] == nil
+      session[:temporary_cart][kit_id] = 1
+    else 
+      session[:temporary_cart][kit_id] += 1 
+    end 
     p session[:temporary_cart]
-    
+    request.session[:temporary_cart].each {|key, value| puts key.to_s + " --> " + value.to_s }
+
+    respond_to do |format|
+      format.json do
+        render json: session[:temporary_cart].to_json
+      end
+    end
+
+    # render json: session[:temporary_cart][kit_id]
+    # render json: {name: 15}
+
+  end 
+
+  def currentCart
+    require 'json'
+
+    p "currentCart"
+    p session[:temporary_cart]
+
+    current_cart = session[:temporary_cart]["Kit3"]
+
+    render json: current_cart
+    # p current_cart.instance_of?
+    # respond_to do |format|
+    #   format.js {render :loadSounds}
+    # end 
   
   end 
 

@@ -265,7 +265,7 @@
     </div>
 
     <div id="shoppingCartContainer">
-            <%= react_component("App")%>
+            <%= react_component("App", props: session[:temporary_cart].to_json)%>
             
     </div>
 </div>
@@ -358,6 +358,7 @@
         let currentNode = list.head
 
         document.getElementById("addToCartButton").dataset.kitId = list.head.value.id
+        document.getElementById("addToCartButton").dataset.pic = list.head.value.pic
 
         let tempCurrentNode = currentNode
 

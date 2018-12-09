@@ -1,15 +1,20 @@
 import ReactOnRails from 'react-on-rails';
 import React, { Component } from 'react';
+import CartBtn from './CartBtn.js';
 import Item from './Item.js';
 
 
 
 class App extends React.Component {
 
-  state = {
-    cart: {}
+  constructor(props) {
+    super(props);
+
+  this.state = {
+    cart: props
   }
 
+}
 
 
   addToCart = () => {
@@ -20,44 +25,62 @@ class App extends React.Component {
     let kitId = document.getElementById("addToCartButton").dataset.kitId
 
     console.log(kitId)
-    console.log(this.state.cart)
+
+    let that = this
+    
+    var response = function (quantity) {
+
+      let blah = JSON.parse(quantity)
+      console.log(blah)
+
+   
+      // let cart = { ...that.state.cart }
+
+      // if (cart[`${kitId}`] === undefined) {
+      //   cart[`${kitId}`] = quantity
+      // } else {
+      //   // cart[`${kitId}`]++
+      //   cart[`${kitId}`] = quantity
+      // }
+
+      that.setState({
+        cart: blah
+      });
+      console.log(that.state.cart)
+      console.log(Object.keys(that.state.cart))
+    }
 
     $.ajax({
       method: "POST",
       url: `/transactions/addToCart`,
-      data: `authenticity_token=${token}&blah=5`,
-      dataType: 'script'
-  });
-
-    let cart = {...this.state.cart}
-
-    if(cart[`${kitId}`] === undefined) {
-      cart[`${kitId}`] = 1 
-    } else {
-      cart[`${kitId}`]++
-    }
-
-    this.setState({
-      cart: cart
-    });
+      data: `authenticity_token=${token}&kitId=${kitId}`,
+      dataType: 'script',
+      success: response
+    })
 
   }
 
-  hover = () => {
-    document.getElementById("shoppingCartContainer").style.backgroundColor = "Black"
+  render() {
 
-   
-
-  }
-  
-  render () {
+    let items = (
+      <div>
+          
+          {Object.keys(this.state.cart).map((item, index) => {
+          return <Item
+            quantity={this.state.cart[item]}
+            name={item}
+            key={item}
+            
+          />
+        })}
+      </div>
+    );
     return (
       <div className="App">
-      <Item
-        click={() => this.addToCart()}
-       
-
-      /> 
+        <CartBtn
+          click={() => this.addToCart()}  
+        />
+        {items}
       </div>
     );
   }
