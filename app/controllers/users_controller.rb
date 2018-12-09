@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :not_admin
+
+  p session.values
   
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+   
   end
 
   # GET /users/1

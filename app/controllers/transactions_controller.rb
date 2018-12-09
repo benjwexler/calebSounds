@@ -5,12 +5,83 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @transactions = Transaction.all
+    Transaction.new(session).add_item
+    p @session
+    
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
   def show
   end
+
+  def addToCart
+    p "add to cart"
+    # Transaction.new(session).add_item
+    if session[:temporary_cart] == nil
+      p "???"
+      session[:temporary_cart] = {}
+    end 
+
+    p kit_id = params[:kitId]
+    # kit_id = "Kit#{kit_id}"
+
+    if session[:temporary_cart][kit_id] == nil
+      session[:temporary_cart][kit_id] = {
+        quantity: 1,
+        pic: params[:coverArtPic]
+      }
+      p "wtf"
+    else 
+      p new_amount = session[:temporary_cart][kit_id]["quantity"]
+      new_amount +=1
+      p "supposed to add"
+      p session[:temporary_cart][kit_id][:quantity] = new_amount
+    end 
+    p session[:temporary_cart]
+    request.session[:temporary_cart].each {|key, value| puts key.to_s + " --> " + value.to_s }
+
+    respond_to do |format|
+      format.json do
+        render json: session[:temporary_cart].to_json
+      end
+    end
+
+    # render json: session[:temporary_cart][kit_id]
+    # render json: {name: 15}
+
+  end 
+
+  def deleteFromCart
+    p kit_id = params[:kitId]
+    p session[:temporary_cart]
+    session[:temporary_cart].delete(kit_id)
+    # session[:temporary_cart][kit_id][:quantity] = 7
+    p request.session[:temporary_cart].each {|key, value| puts key.to_s + " --> " + value.to_s }
+    
+    respond_to do |format|
+      format.json do
+        render json: session[:temporary_cart].to_json
+      end
+    end 
+    
+  end 
+
+  def currentCart
+    require 'json'
+
+    p "currentCart"
+    p session[:temporary_cart]
+
+    current_cart = session[:temporary_cart]["Kit3"]
+
+    render json: current_cart
+    # p current_cart.instance_of?
+    # respond_to do |format|
+    #   format.js {render :loadSounds}
+    # end 
+  
+  end 
 
   # GET /transactions/new
   def new

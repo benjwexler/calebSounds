@@ -6,6 +6,13 @@ class SoundAndKitsController < ApplicationController
   # GET /sound_and_kits.json
   def index
     @sound_and_kits = SoundAndKit.all
+
+    p "______________"
+    p "______________"
+    p "______________"
+    p "______________" 
+    # p request.remote_ip
+    p session.values
   end
 
   # GET /sound_and_kits/1

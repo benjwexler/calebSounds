@@ -17,12 +17,16 @@ class KitsController < ApplicationController
   # Root Path
   def design
 
+    @hello_world_props = { name: "Stranger" }
+
+   
+
       @kits = Kit.all
     @soundfile = Sound.first.soundfile
     @sounds = Sound.all.limit(16)
     @tracks = Track.order(release_date: :desc).limit(4)
     
-
+    p session.values
     
   
   end
@@ -51,6 +55,7 @@ class KitsController < ApplicationController
 
   def loadSounds
     @kit_id = @kit.id
+    @cover_art = @kit.cover_art
     
     p @sounds = Kit.find(@kit_id).sounds
     respond_to do |format|

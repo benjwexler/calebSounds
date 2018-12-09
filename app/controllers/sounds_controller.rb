@@ -1,6 +1,6 @@
 class SoundsController < ApplicationController
   before_action :set_sound, only: [:show, :edit, :update, :destroy]
-  before_action :not_admin
+  # before_action :not_admin
   # include ApplicationHelper
   
   # GET /sounds
@@ -9,11 +9,15 @@ class SoundsController < ApplicationController
 
     # sayHi
     # Method found in Application Helper 
-    not_admin
+    # not_admin
 
     @sounds = Sound.all
 
-   
+  
+  #  TemporaryCart.new(session).add_item
+  #  @session[:temporary_cart]
+
+   p @session
   end
 
   # GET /sounds/1
