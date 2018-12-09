@@ -12,12 +12,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-  this.state = {
-    cart: props,
-    date: new Date()
-  }
+    this.compare = (a, b) => {
+      console.log("Compare")
+      const timestampA = this.state.cart[a].timestamp
+      
+      const timestampB = this.state.cart[b].timestamp
 
-}
+      let comparison = 0;
+
+      if (timestampA > timestampB) {
+        comparison = 1;
+      } else if (timestampA <= timestampB) {
+        comparison = -1;
+      }
+      return comparison;
+
+    }
+
+    this.state = {
+      cart: props,
+      date: new Date()
+    }
+
+  }
 
 
   addToCart = () => {
@@ -28,8 +45,8 @@ class App extends React.Component {
 
 
     let that = this
-    
-    var response = (quantity) =>  {
+
+    var response = (quantity) => {
 
       let newCart = JSON.parse(quantity)
       console.log(that.state.cart)
@@ -40,7 +57,7 @@ class App extends React.Component {
 
     }
 
-    
+
 
     $.ajax({
       method: "POST",
@@ -62,8 +79,8 @@ class App extends React.Component {
 
     let that = this
 
-    var response = (quantity) =>  {
-      
+    var response = (quantity) => {
+
       console.log(quantity)
 
       let newCart = JSON.parse(quantity)
@@ -82,7 +99,7 @@ class App extends React.Component {
 
     }
 
-   
+
 
     $.ajax({
       method: "POST",
@@ -92,15 +109,18 @@ class App extends React.Component {
       success: response
     })
 
-   
+
   }
 
   render() {
 
+    let unsortedItems = Object.keys(this.state.cart)
+    unsortedItems.sort(this.compare)
+
     let items = (
       <div>
-          
-          {Object.keys(this.state.cart).map((item, index) => {
+
+        {unsortedItems.map((item, index) => {
           return <Item
             quantity={this.state.cart[item].quantity}
             name={`Kit ${item}`}
@@ -108,15 +128,15 @@ class App extends React.Component {
             coverArtPic={this.state.cart[item].pic}
             deleteItem={(e) => this.deleteItem(e)}
             kitId={item}
-            
           />
         })}
       </div>
     );
+
     return (
       <div className="App">
         <CartBtn
-          click={() => this.addToCart()}  
+          click={() => this.addToCart()}
         />
         {items}
       </div>

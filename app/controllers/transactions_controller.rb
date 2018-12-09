@@ -29,7 +29,8 @@ class TransactionsController < ApplicationController
     if session[:temporary_cart][kit_id] == nil
       session[:temporary_cart][kit_id] = {
         quantity: 1,
-        pic: params[:coverArtPic]
+        pic: params[:coverArtPic],
+        timestamp: Time.now.to_i
       }
       p "wtf"
     else 
@@ -54,7 +55,7 @@ class TransactionsController < ApplicationController
 
   def deleteFromCart
     p kit_id = params[:kitId]
-    p session[:temporary_cart]
+    # p session[:temporary_cart]
     session[:temporary_cart].delete(kit_id)
     # session[:temporary_cart][kit_id][:quantity] = 7
     p request.session[:temporary_cart].each {|key, value| puts key.to_s + " --> " + value.to_s }
