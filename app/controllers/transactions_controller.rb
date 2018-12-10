@@ -53,6 +53,10 @@ class TransactionsController < ApplicationController
 
   end 
 
+  def subtractFromCart
+  
+  end 
+
   def deleteFromCart
     p kit_id = params[:kitId]
     # p session[:temporary_cart]

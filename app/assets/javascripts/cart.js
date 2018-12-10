@@ -1,3 +1,3 @@
-document.getElementById("addToCartButton").addEventListener("click", function(){
-    console.log("clicked")
-});
+// document.getElementById("addToCartButton").addEventListener("click", function(){
+//     console.log("clicked")
+// });
