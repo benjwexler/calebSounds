@@ -6,6 +6,8 @@ console.log("A J A X")
 
 document.getElementById("addToCartButton").dataset.kitId = <%=@kit_id%>
 document.getElementById("addToCartButton").dataset.pic = "<%=url_for(@cover_art)%>"
+document.getElementById("addToCartButton").dataset.price = <%=@price%>
+document.getElementById("currentKitPrice").innerText = convertToUsCurrency.format(<%=@price%>)
 
 for(let i=1; i<17; i++) {
     soundsObj[`pad${i}`] = 0

@@ -30,7 +30,9 @@ class TransactionsController < ApplicationController
       session[:temporary_cart][kit_id] = {
         quantity: 1,
         pic: params[:coverArtPic],
-        timestamp: Time.now.to_i
+        timestamp: Time.now.to_i,
+        price: params[:price],
+        name: params[:name]
       }
       p "wtf"
     else 
@@ -54,6 +56,23 @@ class TransactionsController < ApplicationController
   end 
 
   def subtractFromCart
+    p "subtracted"
+    p kit_id = params[:kitId]
+    p new_amount = session[:temporary_cart][kit_id]["quantity"]
+      if new_amount < 2
+        session[:temporary_cart].delete(kit_id)
+      else
+      new_amount -=1
+      p session[:temporary_cart][kit_id][:quantity] = new_amount
+      end
+
+      respond_to do |format|
+        format.json do
+          render json: session[:temporary_cart].to_json
+        end
+      end
+
+      
   
   end 
 

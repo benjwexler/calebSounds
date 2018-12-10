@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/kits/bestsellers', to: 'kits#bestsellers'
   get '/kits/switchSounds', to: 'kits#switchSounds'
   post 'transactions/cart/addToCart', to: 'transactions#addToCart'
+  post '/transactions/cart/subtractFromCart', to: 'transactions#subtractFromCart'
   post '/transactions/cart/deleteItemFromCart', to: 'transactions#deleteFromCart'
   get 'transactions/cart/currentCart', to: 'transactions#currentCart'
 

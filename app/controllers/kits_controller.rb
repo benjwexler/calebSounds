@@ -56,6 +56,7 @@ class KitsController < ApplicationController
   def loadSounds
     @kit_id = @kit.id
     @cover_art = @kit.cover_art
+    @price = @kit.price
     
     p @sounds = Kit.find(@kit_id).sounds
     respond_to do |format|
