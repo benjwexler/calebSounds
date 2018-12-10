@@ -4,6 +4,12 @@ import React, { Component } from 'react';
 import CartBtn from './CartBtn.js';
 import Item from './Item.js';
 
+const convertToUsCurrency = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
+
 
 
 
@@ -13,6 +19,7 @@ class App extends React.Component {
     super(props);
 
     this.railsToken = ReactOnRails.authenticityToken()
+    
 
     this.compare = (a, b) => {
       const timestampA = this.state.cart[a].timestamp
@@ -43,20 +50,25 @@ class App extends React.Component {
     
 
   }
+  
 
 
   addToCart = (e) => {
     let kitId
     let coverArtPic
     let data 
+    let price
+    let name
     // Conditional is to check whether click is from the "Add to Cart button" for the drum machine, or it's from the "plus1" counter for a kit already in the cart
     if(e.currentTarget.parentElement.getAttribute("class")=== "addItem") {
       kitId= e.currentTarget.parentElement.parentElement.id
       data = `authenticity_token=${this.railsToken}&kitId=${kitId}`
     } else {
       kitId = document.getElementById("addToCartButton").dataset.kitId
+      price=document.getElementById("addToCartButton").dataset.price
       coverArtPic = document.getElementById("addToCartButton").dataset.pic
-      data = `authenticity_token=${this.railsToken}&kitId=${kitId}&coverArtPic=${coverArtPic}`
+      name = document.getElementById("soundPackImage").dataset.name
+      data = `authenticity_token=${this.railsToken}&kitId=${kitId}&coverArtPic=${coverArtPic}&price=${price}&name=${name}`
     }
      
 
@@ -103,7 +115,7 @@ class App extends React.Component {
 
     $.ajax({
       method: "POST",
-      url: `/transactions/cart/subtractFromCart`,
+      url: `/transactions/cart/subtractFromCart`, 
       data: data,
       dataType: 'script',
       success: response
@@ -146,16 +158,21 @@ class App extends React.Component {
 
   render() {
 
+    
+
     let unsortedItems = Object.keys(this.state.cart)
     unsortedItems.sort(this.compare)
+    let sum = 0
 
     let items = (
       <div>
       
         {unsortedItems.map((item, index) => {
+          sum += this.state.cart[item].price * this.state.cart[item].quantity
+          console.log(this.state.cart[item].quantity * 5)
           return <Item
             quantity={this.state.cart[item].quantity}
-            name={`Kit ${item}`}
+            name={this.state.cart[item].name}
             key={item}
             coverArtPic={this.state.cart[item].pic}
             deleteItem={(e) => this.deleteItem(e)}
@@ -163,8 +180,10 @@ class App extends React.Component {
             kitData={item}
             increaseQuantity={(e) => this.addToCart(e)}
             decreaseQuantity={(e) => this.decreaseQuantity(e)}
+            price={convertToUsCurrency.format(this.state.cart[item].price * this.state.cart[item].quantity)}
           />
         })}
+        <div> {convertToUsCurrency.format(sum)}</div>
       </div>
     );
 
