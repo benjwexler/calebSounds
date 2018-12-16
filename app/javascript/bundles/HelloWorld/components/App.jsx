@@ -39,7 +39,8 @@ class App extends React.Component {
 
     this.state = {
       cart: props,
-      date: new Date()
+      date: new Date(),
+      showCart: true
     }
 
   }
@@ -92,6 +93,16 @@ class App extends React.Component {
       dataType: 'script',
       success: response
     })
+
+  }
+
+  hideCart = () => {
+
+      let newShowCart = !this.state.showCart
+
+    this.setState({
+      showCart: newShowCart
+    });
 
   }
 
@@ -197,7 +208,9 @@ class App extends React.Component {
     unsortedItems.sort(this.compare)
     let sum = 0
 
-    let items = (
+    let items
+    if (this.state.showCart) {
+    items = (
       <div>
 
         {unsortedItems.map((item, index) => {
@@ -226,15 +239,19 @@ class App extends React.Component {
           <div className="proceedToCheckoutContainer">
             Proceed to Checkout: {convertToUsCurrency.format(sum)}
           </div>
+
+          
         </div>
       </div>
     );
+  }
 
     return (
       <div className="App">
         <CartBtn
           click={(e) => this.addToCart(e)}
         />
+        <div onClick={() => this.hideCart()} className="hiddenHideCartBtn"> ddd</div>
         {items}
 
       </div>
