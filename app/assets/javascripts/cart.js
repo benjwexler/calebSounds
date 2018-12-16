@@ -1,13 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-document.getElementById("shoppingCartLink").addEventListener("mouseover", function(){
+document.getElementById("shoppingCartIcon").addEventListener("click", function(){
     console.log("clicked")
-    document.querySelector(".App").style.display = "flex";
+    document.querySelector(".hiddenHideCartBtn").click()
 });
 
-document.getElementById("shoppingCartLink").addEventListener("mouseout", function(){
-    console.log("clicked")
-    document.querySelector(".App").style.display = "none";
-});
+
 
 });
