@@ -43,6 +43,98 @@ body {
     background: rgba(45, 51, 221, 0.747) !important;
 }
 
+#shoppingCartListAbsolute {
+    position: fixed;
+    top: 90px;
+    right: 0px;
+    width: 300px;
+    height: auto;
+    background: white;
+    z-index: 999999999999999;
+}
+
+.cartRow {
+    height: 50px;
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    font-size: 14px;
+}
+
+.totalContainer {
+    height: 50px;
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.totalText {
+    height: 100%;
+    width: 80%;
+
+}
+
+.totalPrice {
+    height: 100%;
+    width: 20%;
+    
+}
+
+.checkoutOuterContainer {
+    height: 80px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.proceedToCheckoutContainer {
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    background: rgba(45, 51, 221, 0.747) !important;
+    border-radius: 10%;
+    margin-top: 7px;
+    text-align: center;
+}
+
+.itemQuantity {
+    height: 100%;
+    width: 15%;
+    // border: 1px solid black;s
+    text-align: center;
+    padding-top: 8px;
+}
+
+
+
+.itemTitle {
+    height: 100%;
+    width: 45%;
+    // border: 1px solid black;
+    // text-align: center;
+    padding-top: 8px;  
+}
+
+.deleteItem {
+    height: 100%;
+    width: 15%;
+    // border: 1px solid black;
+    text-align: center;
+    padding-top: 8px; 
+}
+
+.itemPrice {
+    height: 100%;
+    width: 25%;
+    // border: 1px solid black;
+    text-align: center;
+    padding-top: 8px; 
+}
+
+
+
 #absoluteNav {
     width: 100vw;
     height: 90px;

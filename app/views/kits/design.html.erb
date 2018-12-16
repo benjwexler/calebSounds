@@ -1,8 +1,28 @@
 <!-- The class below "expand-md" sets at what width the navbar will transform to a hamburger menu (If you change it to "lg" it will switch when the screen is wider)   -->
 
+<div id="shoppingCartListAbsolute">
+    <div class="cartRow">
+        <div class="itemQuantity"> 1 </div>
+        <div class="itemTitle"> R&B Guitar </div>
+        <div class="deleteItem"> 
+            <i class="fas fa-trash-alt"></i>
+        </div>
+        <div class="itemPrice"> $12.95 </div>
+    </div>
+    <div class="totalContainer">
+        <div class="totalText">Total:</div>
+        <div class="totalPrice">$12.95</div>
+    </div>
 
+    <div class="emptyBag">Empty Bag</div>
+    <div class="checkoutOuterContainer">
+        <div class="proceedToCheckoutContainer">
+            Proceed to Checkout: $12.95
+        </div>
+    </div>
+</div>
 <nav class="navbar navbar-expand-md navbar-light navbarText">
-        <div id="absoluteNav">
+        <!-- <div id="absoluteNav">
             <div class="absoluteNavTitleShadow"></div>
             <div class="absoluteNavSectionsShadow"></div>
             <div class="absoluteNavCartSection">
@@ -18,7 +38,7 @@
             </div>
             <div class="absoluteNavSoundcloudShadow"></div>
 
-        </div>
+        </div> -->
     <a id="logoText" class="navbar-brand">
         <img id="logo" src="pics/guitarLogo.png"> Caleb Elias G sounds
     </a>
@@ -41,12 +61,20 @@
 
         </ul>
         <ul class="navbar-nav">
-            <li class="nav-item ">
+
+             
+
+                  <li class="nav-item ">
+                <div class="nav-link icon">
+                    <i id="shoppingCartIcon" class=" fa-2x fas fa-shopping-cart"></i>
+                </div>
+            </li>
+            <!-- <li class="nav-item ">
                 <a class="nav-link icon" target="_blank" href="https://soundcloud.com/calebeliasgmusic">
                     <i class="fab fa-soundcloud fa-2x soundcloud"></i>
                 </a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
                 <a class="nav-link icon" target="_blank" href="https://www.instagram.com/calebeliasgmusic/">
                     <i class="fab fa-instagram fa-2x instagram"></i>
                 </a>
@@ -55,7 +83,7 @@
                 <a class="nav-link icon" target="_blank" href="https://open.spotify.com/artist/3KfwtF94LanpNpDp6yVCji?si=CT4egyHCTdSWRJZtHqREOQ">
                     <i class="fab fa-spotify fa-2x spotify"></i>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item ">
                 <a class="nav-link textNoIcon soundcloud" target="_blank" href="https://soundcloud.com/calebeliasgmusic">Soundcloud</a>
             </li>
