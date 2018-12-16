@@ -91,6 +91,17 @@ class TransactionsController < ApplicationController
 
   end 
 
+  def clearCart
+    session[:temporary_cart] = {}
+
+    respond_to do |format|
+      format.json do
+        render json: session[:temporary_cart].to_json
+      end
+    end 
+    
+  end
+
   def currentCart
     require 'json'
 
