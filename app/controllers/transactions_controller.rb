@@ -88,7 +88,7 @@ class TransactionsController < ApplicationController
         render json: session[:temporary_cart].to_json
       end
     end 
-    
+
   end 
 
   def currentCart
