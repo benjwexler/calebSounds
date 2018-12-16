@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/transactions/cart/subtractFromCart', to: 'transactions#subtractFromCart'
   post '/transactions/cart/deleteItemFromCart', to: 'transactions#deleteFromCart'
   get 'transactions/cart/currentCart', to: 'transactions#currentCart'
+  post 'transactions/cart/clearCart', to: 'transactions#clearCart'
 
   # get '/kits/getRequest', to: 'kits#getRequest'
   match '/kits/getRequest' => 'kits#getRequest', via: :get

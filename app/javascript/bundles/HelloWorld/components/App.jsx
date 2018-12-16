@@ -19,11 +19,11 @@ class App extends React.Component {
     super(props);
 
     this.railsToken = ReactOnRails.authenticityToken()
-    
+
 
     this.compare = (a, b) => {
       const timestampA = this.state.cart[a].timestamp
-      
+
       const timestampB = this.state.cart[b].timestamp
 
       let comparison = 0;
@@ -47,30 +47,30 @@ class App extends React.Component {
   increaseQuantity = (e) => {
     console.log(e.currentTarget.parentElement.parentElement.id)
     console.log(e.currentTarget.parentElement.getAttribute("class"))
-    
+
 
   }
-  
+
 
 
   addToCart = (e) => {
     let kitId
     let coverArtPic
-    let data 
+    let data
     let price
     let name
     // Conditional is to check whether click is from the "Add to Cart button" for the drum machine, or it's from the "plus1" counter for a kit already in the cart
-    if(e.currentTarget.parentElement.getAttribute("class")=== "addItem") {
-      kitId= e.currentTarget.parentElement.parentElement.id
+    if (e.currentTarget.parentElement.getAttribute("class") === "addItem") {
+      kitId = e.currentTarget.parentElement.parentElement.id
       data = `authenticity_token=${this.railsToken}&kitId=${kitId}`
     } else {
       kitId = document.getElementById("addToCartButton").dataset.kitId
-      price=document.getElementById("addToCartButton").dataset.price
+      price = document.getElementById("addToCartButton").dataset.price
       coverArtPic = document.getElementById("addToCartButton").dataset.pic
       name = document.getElementById("soundPackImage").dataset.name
       data = `authenticity_token=${this.railsToken}&kitId=${kitId}&coverArtPic=${coverArtPic}&price=${price}&name=${name}`
     }
-     
+
 
     let that = this
 
@@ -95,9 +95,42 @@ class App extends React.Component {
 
   }
 
+  clearCart = () => {
+    console.log('cart cleared')
+
+    // this.setState({
+    //   cart: {}
+    // })
+
+    let data = `authenticity_token=${this.railsToken}`
+
+    let that = this
+
+    var response = (emptyCart) => {
+
+      let newCart = JSON.parse(emptyCart)
+      console.log(that.state.cart)
+
+      that.setState({
+        cart: newCart
+      });
+
+    }
+
+    $.ajax({
+      method: "POST",
+      url: `/transactions/cart/clearCart`,
+      data: data,
+      dataType: 'script',
+      success: response
+    })
+
+
+  }
+
   decreaseQuantity = (e) => {
 
-    let kitId= e.currentTarget.parentElement.parentElement.id
+    let kitId = e.currentTarget.parentElement.parentElement.id
     let data = `authenticity_token=${this.railsToken}&kitId=${kitId}`
 
     let that = this
@@ -115,7 +148,7 @@ class App extends React.Component {
 
     $.ajax({
       method: "POST",
-      url: `/transactions/cart/subtractFromCart`, 
+      url: `/transactions/cart/subtractFromCart`,
       data: data,
       dataType: 'script',
       success: response
@@ -158,7 +191,7 @@ class App extends React.Component {
 
   render() {
 
-    
+
 
     let unsortedItems = Object.keys(this.state.cart)
     unsortedItems.sort(this.compare)
@@ -166,7 +199,7 @@ class App extends React.Component {
 
     let items = (
       <div>
-      
+
         {unsortedItems.map((item, index) => {
           sum += this.state.cart[item].price * this.state.cart[item].quantity
           console.log(this.state.cart[item].quantity * 5)
@@ -183,7 +216,17 @@ class App extends React.Component {
             price={convertToUsCurrency.format(this.state.cart[item].price * this.state.cart[item].quantity)}
           />
         })}
-        <div> {convertToUsCurrency.format(sum)}</div>
+        <div className="totalContainer">
+          <div className="totalText">Total:</div>
+          <div className="totalPrice">{convertToUsCurrency.format(sum)}</div>
+        </div>
+
+        <div onClick={() => this.clearCart()} className="emptyBag">Empty Bag</div>
+        <div className="checkoutOuterContainer">
+          <div className="proceedToCheckoutContainer">
+            Proceed to Checkout: {convertToUsCurrency.format(sum)}
+          </div>
+        </div>
       </div>
     );
 
@@ -193,6 +236,7 @@ class App extends React.Component {
           click={(e) => this.addToCart(e)}
         />
         {items}
+
       </div>
     );
   }

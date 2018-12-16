@@ -1,7 +1,9 @@
 <!-- The class below "expand-md" sets at what width the navbar will transform to a hamburger menu (If you change it to "lg" it will switch when the screen is wider)   -->
 
 <div id="shoppingCartListAbsolute">
-    <div class="cartRow">
+        <%= react_component("App", props: session[:temporary_cart].to_json)%>
+        <%= stylesheet_pack_tag 'ShoppingCart' %>
+    <!-- <div class="cartRow">
         <div class="itemQuantity"> 1 </div>
         <div class="itemTitle"> R&B Guitar </div>
         <div class="deleteItem"> 
@@ -19,7 +21,7 @@
         <div class="proceedToCheckoutContainer">
             Proceed to Checkout: $12.95
         </div>
-    </div>
+    </div> -->
 </div>
 <nav class="navbar navbar-expand-md navbar-light navbarText">
         <!-- <div id="absoluteNav">
@@ -318,8 +320,7 @@
     </div>
 
     <div id="shoppingCartContainer">
-        <%= react_component("App", props: session[:temporary_cart].to_json)%>
-            <%= stylesheet_pack_tag 'ShoppingCart' %>
+      
 
     </div>
 </div>
