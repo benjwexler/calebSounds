@@ -26,7 +26,8 @@ class KitsController < ApplicationController
     @sounds = Sound.all.limit(16)
     @tracks = Track.order(release_date: :desc).limit(4)
     
-    p session.values
+    @items_in_cart = session[:temporary_cart].keys.length
+  
     
   
   end
