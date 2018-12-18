@@ -24,3 +24,13 @@
     height: 100%; 
     border: 1px solid black
 }
+
+.testReactAbsolute {
+    height: 50px;
+    width: 50px;
+    border: 2px solid black;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+}

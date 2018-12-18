@@ -247,13 +247,16 @@ class App extends React.Component {
   }
 
     return (
+      <div> 
       <div className="App">
         <CartBtn
           click={(e) => this.addToCart(e)}
         />
         <div onClick={() => this.hideCart()} className="hiddenHideCartBtn"> ddd</div>
         {items}
-
+        
+      </div>
+      {/* <div className="testReactAbsolute"></div> */}
       </div>
     );
   }
