@@ -78,7 +78,11 @@ class App extends React.Component {
     var response = (quantity) => {
 
       let newCart = JSON.parse(quantity)
-      console.log(that.state.cart)
+
+      console.log(Object.keys(newCart).length)
+
+      document.getElementById('shoppingCartQuantityContainer').innerText = Object.keys(newCart).length
+      // console.log(that.state.cart)
 
       that.setState({
         cart: newCart
@@ -120,6 +124,7 @@ class App extends React.Component {
     var response = (emptyCart) => {
 
       let newCart = JSON.parse(emptyCart)
+      document.getElementById('shoppingCartQuantityContainer').innerText = Object.keys(newCart).length
       console.log(that.state.cart)
 
       that.setState({
@@ -180,6 +185,7 @@ class App extends React.Component {
       console.log(quantity)
 
       let newCart = JSON.parse(quantity)
+      document.getElementById('shoppingCartQuantityContainer').innerText = Object.keys(newCart).length
       console.log("is delete processing")
       console.log(that.state.cart)
 
