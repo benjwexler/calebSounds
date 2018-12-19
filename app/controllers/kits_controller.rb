@@ -17,7 +17,10 @@ class KitsController < ApplicationController
   # Root Path
   def design
 
-    @hello_world_props = { name: "Stranger" }
+  
+
+  
+    p "hoohah"
 
    
 

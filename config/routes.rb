@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   post '/transactions/cart/deleteItemFromCart', to: 'transactions#deleteFromCart'
   get 'transactions/cart/currentCart', to: 'transactions#currentCart'
   post 'transactions/cart/clearCart', to: 'transactions#clearCart'
+  # get 'users/sign_in', to: 'kits#design'
+
+  devise_scope :user  do
+    get '/users/sign_in', to: 'kits#design'
+  end
 
   # get '/kits/getRequest', to: 'kits#getRequest'
   match '/kits/getRequest' => 'kits#getRequest', via: :get
