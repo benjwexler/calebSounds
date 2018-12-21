@@ -17,6 +17,8 @@ class TransactionsController < ApplicationController
 
   def addToCart
     p "add to cart"
+
+    session = nil 
     # Transaction.new(session).add_item
     if session[:temporary_cart] == nil
       p "???"

@@ -1,11 +1,12 @@
 class KitsController < ApplicationController
   before_action :set_kit, only: [:show, :edit, :update, :destroy, :loadSounds]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy ]
-  before_action :not_admin, except: [:design, :loadSounds]
+  before_action :not_admin, except: [:design, :loadSounds, :redirect_user]
+  skip_before_action :verify_authenticity_token
   # skip_before_action :set_kit, :only => [:bestsellers]
 
   # GET /kits
-  # GET /kits.json
+  # GET /kits.jsons
   def index
     @kits = Kit.all
     p "Hi"
@@ -13,9 +14,34 @@ class KitsController < ApplicationController
     p params 
   end
 
+  def redirect_user
+    # redirect_to root_path
+
+    # redirect_to root_path(:message => "wrongInfo")
+    redirect_to root_path(request.parameters)
+    
+
+    # render "redirect_user.js.erb"
+    
+  end 
+
   
   # Root Path
   def design
+
+    p p "hoohah"
+    p params[:message] 
+
+    @wrong_info = false
+
+    if params[:message] == "wrongInfo" 
+      @wrong_info = true
+    end 
+
+    p performed?  
+    
+    
+    
 
   
 
