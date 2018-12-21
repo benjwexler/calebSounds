@@ -372,7 +372,7 @@
             <div class="modal-body">
                     <h2>Log in</h2>
 
-                    <%= form_for(:user, :url => session_path(:user)) do |f| %>
+                    <%= form_for(:user, :url => session_path(:user), :html => { :id => "ajax_signin"}) do |f| %>
 
                       <div class="field">
                         <%= f.label :email %><br />
@@ -383,12 +383,14 @@
                         <%= f.label :password %><br />
                         <%= f.password_field :password, autocomplete: "current-password" %>
                       </div>
-                    
-                     
-                    
+
                       <div class="actions">
-                        <%= f.submit "Log in" %>
+                        <input type="submit" name="commit" value="Log in">
                       </div>
+
+                      <div id="wrongLogin"> </div>
+                    
+                   
 
                       <% if @wrong_info == true %>
                         <div>  The username or password you entered was incorrect</div>

@@ -24,6 +24,7 @@
 //= require .//navbar.js
 //= require .//drumMachine.js
 //= require .//cart.js
+//= require .//deviseAjax.js
 
 
 
