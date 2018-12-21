@@ -27,6 +27,10 @@ $(document).ready(function(){
             // location.href = "/";;
             console.log(json)
             console.log("sucess")
+            document.getElementById("login").style.display = "none"
+            document.getElementById("signup").style.display = "none"
+            document.getElementById("logout").style.display = "block"
+            document.getElementById("modal").click()
          },
          error: function(xhr) { 
             /** ACTIVATE THIS IF YOU GOT MORE THAN EMAIL OR PASSWORD FIELDS
@@ -43,6 +47,29 @@ $(document).ready(function(){
          dataType: "json"
        });
     });
+
+    
+
+    $("#logout").click(function(e){
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/sign_out",
+        data: {"_method":"delete"},
+        success: function(json){
+           console.log("trying to delete")
+           document.getElementById("login").style.display = "block"
+            document.getElementById("signup").style.display = "block"
+            document.getElementById("logout").style.display = "none"
+        },
+        error: function(xhr) { 
+            console.log("error with delete")
+        
+        }, 
+        dataType: "json"
+      });
+      
+    })
+
     
     $("form#ajax_signup").submit(function(e){
        e.preventDefault(); 
