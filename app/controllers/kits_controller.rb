@@ -17,7 +17,7 @@ class KitsController < ApplicationController
   def redirect_user
     # redirect_to root_path
 
-    redirect_to root_path(:message => "wrongInfo")
+    # redirect_to root_path(:message => "wrongInfo")
     # redirect_to root_path(request.parameters)
     
 
@@ -29,7 +29,7 @@ class KitsController < ApplicationController
   # Root Path
   def design
 
-    p p "hoohah"2
+    p  "hoohah"
     p params[:message] 
 
     @wrong_info = false
