@@ -5,6 +5,18 @@ class Users::SessionsController < Devise::SessionsController
 
   respond_to :json
 
+ 
+
+  # def new
+  #   self.resource = resource_class.new(sign_in_params)
+  #   clean_up_passwords(resource)
+  #   # yield resource if block_given?
+  #   p render :json => {
+  #     'csrfParam' => request_forgery_protection_token,
+  #     'csrfToken' => form_authenticity_token
+  # }
+  # end
+
   # GET /resource/sign_in
   # def new
   #   redirect_to root_path
@@ -18,6 +30,17 @@ class Users::SessionsController < Devise::SessionsController
   #   p " hira"
   # end
 
+  def create
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    yield resource if block_given?
+    p render :json => {
+        'csrfParam' => request_forgery_protection_token,
+        'csrfToken' => form_authenticity_token
+    }
+  end
+
   # POST /resource/sign_in
   # def create
   #   super
@@ -27,6 +50,14 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+
+  def destroy # Assumes only JSON requests
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    p render :json => {
+        'csrfParam' => request_forgery_protection_token,
+        'csrfToken' => form_authenticity_token
+    }
+  end
 
   # protected
 

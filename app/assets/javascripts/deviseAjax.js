@@ -27,6 +27,7 @@ $(document).ready(function(){
             // location.href = "/";;
             console.log(json)
             console.log("sucess")
+            document.getElementById("csfrToken").content = json.csrfToken
             document.getElementById("login").style.display = "none"
             document.getElementById("signup").style.display = "none"
             document.getElementById("logout").style.display = "block"
@@ -51,12 +52,18 @@ $(document).ready(function(){
     
 
     $("#logout").click(function(e){
+      let csfrToken = document.getElementById("csfrToken").content
+      console.log(csfrToken)
+      console.log("dnirfnuifn i")
       $.ajax({
         type: "POST",
         url: "http://localhost:3000/users/sign_out",
-        data: {"_method":"delete"},
+        data: {"_method":"delete", "authenticity_token": csfrToken},
         success: function(json){
            console.log("trying to delete")
+           console.log(json)
+           console.log(json.csrfToken)
+           document.getElementById("csfrToken").content = json.csrfToken
            document.getElementById("login").style.display = "block"
             document.getElementById("signup").style.display = "block"
             document.getElementById("logout").style.display = "none"
