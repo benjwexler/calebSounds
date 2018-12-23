@@ -51,7 +51,9 @@ class KitsController < ApplicationController
    
 
       @kits = Kit.all
+      if Sound.first
     @soundfile = Sound.first.soundfile
+      end 
     @sounds = Sound.all.limit(16)
     @tracks = Track.order(release_date: :desc).limit(4)
 
