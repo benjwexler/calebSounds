@@ -2,7 +2,7 @@ class KitsController < ApplicationController
   before_action :set_kit, only: [:show, :edit, :update, :destroy, :loadSounds]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy ]
   before_action :not_admin, except: [:design, :loadSounds, :redirect_user]
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   # skip_before_action :set_kit, :only => [:bestsellers]
 
   # GET /kits
