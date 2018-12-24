@@ -377,12 +377,12 @@
 
                     <div class="field">
                         <label for="user_email">Email</label><br>
-                        <input autofocus="autofocus" autocomplete="email" type="email" name="user[email]" id="user_email">
+                        <input autofocus="autofocus" autocomplete="email" type="email" name="user[email]" id="signInUserEmailInput">
                     </div>
 
                     <div class="field">
                         <label for="user_password">Password</label><br>
-                        <input autocomplete="current-password" type="password" name="user[password]" id="user_password">
+                        <input autocomplete="current-password" type="password" name="user[password]" id="signInUserPasswordInput">
                     </div>
 
                     <div class="actions">
@@ -408,33 +408,7 @@
 
 </div>
 
-<h2>Sign up</h2>
 
-<%= form_for(:user, url: registration_path(:user)) do |f| %>
-
-<div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-</div>
-
-<div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(
-        <%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-</div>
-
-<div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-</div>
-
-<div class="actions">
-    <%= f.submit "Sign up" %>
-</div>
-<% end %>
 
 
 <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>

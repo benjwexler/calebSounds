@@ -16,13 +16,20 @@ $(document).ready(function(){
       return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
     };
     $("form#ajax_signin").submit(function(e){
+      
        e.preventDefault(); 
+       let signUpObj = {};
+      signUpObj.utf8 = "✓";
+      signUpObj.authenticity_token = document.getElementById("csfrToken").content
+      signUpObj['user[email]'] = document.getElementById("signInUserEmailInput").value
+      signUpObj['user[password]'] = document.getElementById("signInUserPasswordInput").value
+      signUpObj.commit = "Log in"
        var user_info = $(this).serializeObject();
        console.log(user_info)
        $.ajax({
          type: "POST",
          url: "http://localhost:3000/users/sign_in",
-         data: user_info,
+         data: signUpObj,
          success: function(json){
             // location.href = "/";;
             console.log(json)
