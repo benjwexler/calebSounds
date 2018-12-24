@@ -88,26 +88,18 @@ $(document).ready(function(){
     $("form#ajax_signup").submit(function(e){
        e.preventDefault(); 
        var user_info = $(this).serializeObject();
+       console.log(user_info)
        $.ajax({
          type: "POST",
          url: "http://localhost:3000/users",
          data: user_info,
          success: function(json){
-            location.href = "/";;
+            console.log(json)
+            console.log('signed up')
          },
          error: function(xhr) { 
-             
-             var errors = jQuery.parseJSON(xhr.responseText).errors; 
-             for (messages in errors) { 
-               error_messages =  messages.titleize() + ' ' + errors[messages];
-              var field = "form#ajax_signup " + "#user_" + messages;
-              var error_message = error_messages;
-              console.log(error_messages);
-              //alert(error_messages);
-              $('#js-error-block-signup ul').append("<li>"+error_messages+"</li>");
-              $(field).css('border', '1px solid #D9534F');          
-             } 
-            $('#js-error-block-signup').show();
+             console.log("couldn't sign up")
+          
          }, 
          dataType: "json"
        });
